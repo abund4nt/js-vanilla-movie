@@ -9,6 +9,8 @@ eventListeners()
 function eventListeners() {
     formulario.addEventListener("submit", agregarCard);
 
+    btnTheme.addEventListener("click", cambiarTema);
+
     window.addEventListener("blur", () => {
         previousTitle = document.title;
         document.title = '¡No te vayas! ¡Vuelve!'
@@ -65,7 +67,7 @@ function agregarCard(e) {
     const btnBorrar = divCard.querySelector("button");
 
     btnBorrar.addEventListener("click", (e) => {
-        eliminarCard(e)
+        eliminarCard(e, divCard)
     })
 
 
@@ -73,14 +75,22 @@ function agregarCard(e) {
 
 }
 
-function eliminarCard(e) {
+function eliminarCard(e, element) {
     e.preventDefault
-    e.target.parentElement.parentElement.parentElement.parentElement.remove()
+    element.remove()
 
 }
 
-function darkTheme(e) {
+function cambiarTema(e) {
     e.preventDefault();
+
+    if(document.documentElement.getAttribute("data-bs-theme") === "light") {
+        document.documentElement.setAttribute("data-bs-theme","dark")
+        btnTheme.querySelector("i").classList = "bi bi-brightness-high"
+    } else {
+        document.documentElement.setAttribute("data-bs-theme","light");
+        btnTheme.querySelector("i").classList = "bi bi-moon"
+    }
 
 } 
 
