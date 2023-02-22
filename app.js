@@ -86,10 +86,11 @@ function cambiarTema(e) {
 
     if(document.documentElement.getAttribute("data-bs-theme") === "light") {
         document.documentElement.setAttribute("data-bs-theme","dark")
-        btnTheme.querySelector("i").classList = "bi bi-brightness-high"
+        btnTheme.querySelector("i").classList = "bi bi-brightness-high text-warning"
     } else {
         document.documentElement.setAttribute("data-bs-theme","light");
         btnTheme.querySelector("i").classList = "bi bi-moon"
+    
     }
 
 } 
