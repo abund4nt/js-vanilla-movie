@@ -2,12 +2,12 @@
 const formulario = document.querySelector("#formCards");
 const containerCards = document.querySelector("#containerCards");
 let previousTitle = document.title;
+const btnTheme = document.querySelector("#btnTheme");
+
 // Event Listeners
 eventListeners()
 function eventListeners() {
     formulario.addEventListener("submit", agregarCard);
-
-    containerCards.addEventListener("click", eliminarCard)
 
     window.addEventListener("blur", () => {
         previousTitle = document.title;
@@ -17,6 +17,7 @@ function eventListeners() {
     window.addEventListener("focus", () => {
         document.title = previousTitle
     })
+
 };
 
 // Funciones
@@ -38,7 +39,7 @@ function agregarCard(e) {
         alertError.classList.remove("d-none");
         return
     } else {
-        console.log("Correcto")
+        console.log("Correcto");
     }
 
     setTimeout(() => {
@@ -47,9 +48,8 @@ function agregarCard(e) {
 
     const divCard = document.createElement("div")
     divCard.className = "col-12 col-md-6 col-lg-4 d-flex justify-content-center";
-    divCard.setAttribute("data-id", Date.now())
     divCard.innerHTML = `
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem; id="cards">
                     <img src="${imgPelicula.value}"
                     width="286" height="200" alt="...">
                     <div class="card-body">
@@ -62,12 +62,28 @@ function agregarCard(e) {
     </div>
     `
 
-    containerCards.appendChild(divCard)
+    const btnBorrar = divCard.querySelector("button");
+
+    btnBorrar.addEventListener("click", (e) => {
+        eliminarCard(e)
+    })
+
+
+    containerCards.appendChild(divCard);
+
 }
 
 function eliminarCard(e) {
-    e.preventDefault()
+    e.preventDefault
+    e.target.parentElement.parentElement.parentElement.parentElement.remove()
+
 }
+
+function darkTheme(e) {
+    e.preventDefault();
+
+} 
+
 
 
 
