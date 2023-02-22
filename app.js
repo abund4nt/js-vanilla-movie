@@ -39,14 +39,13 @@ function agregarCard(e) {
 
     if(titlePelicula.value === "" || descPelicula.value === "" || imgPelicula.value === "") {
         alertError.classList.remove("d-none");
+        setTimeout(() => {
+            alertError.classList.add("d-none")
+        }, 1500);
         return
     } else {
         console.log("Correcto");
     }
-
-    setTimeout(() => {
-        alertError.classList = "d-none"
-    }, 1500);
 
     const divCard = document.createElement("div")
     divCard.className = "col-12 col-md-6 col-lg-4 d-flex justify-content-center";
