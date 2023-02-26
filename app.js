@@ -77,25 +77,24 @@ function agregarCard(e) {
   containerCards.appendChild(divCard);
 
   btnEditar.addEventListener("click", function () {
-    // permitir la edición del título y del contenido
+    
     const title = divCard.querySelector("h5");
     const content = divCard.querySelector("p");
-    title.contentEditable = true;
-    content.contentEditable = true;
-    title.focus();
 
-    // cambiar el texto del botón a "Guardar"
-    btnEditar.textContent = "Guardar";
+    if (btnEditar.textContent === "Editar") {
 
-    // agregar un listener de evento al botón para guardar los cambios
-    btnEditar.addEventListener("click", function () {
-      // desactivar la edición del título y del contenido
+      title.contentEditable = true;
+      content.contentEditable = true;
+      title.focus();
+      btnEditar.textContent = "Guardar";
+
+    } else {
+
       title.contentEditable = false;
       content.contentEditable = false;
-
-      // cambiar el texto del botón de vuelta a "Editar"
       btnEditar.textContent = "Editar";
-    });
+
+    }
   });
 }
 
